@@ -158,9 +158,9 @@ IF "RFID_I_Byte0_Bit0" = 1 THEN
         //Send to Raspberry
         "TUSEND_Req" := TRUE;
             
-        // Wenn Deckel gefunden wird
+        // if the caps is found
         IF "MyData".TUSEND_Data[17] = 16#FF THEN
-            //auslesen von RFID
+            //read from RFID
             IF "RFID_I_Byte0" = 2#1000_0001 THEN
                 "RFID_O_Byte1" := 16#01;// read data from RFID 
                 "RFID_O_Byte2" := 16#00;
@@ -172,7 +172,7 @@ IF "RFID_I_Byte0_Bit0" = 1 THEN
                 "RFID_O_Byte9" := 16#01;
             END_IF;
             
-            //white Licht, zeigt Deckel gefunden wird
+            //white light which means the caps is found
             "SL_O_Byte1_Bit7" := 0;
             "SL_O_Byte1_Bit6" := 1;
             "SL_O_Byte1_Bit5" := 1;
